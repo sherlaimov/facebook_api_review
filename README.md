@@ -221,7 +221,7 @@ The `/me` node is a special endpoint that translates to the `user_id` of the per
 GET graph.facebook.com
   /me/photos
 ```
-#### Choosing Fields
+### 1. Choosing Fields
 You can choose the fields or edges that you want returned with the `fields` query parameter. This is really useful for making your API calls more efficient and fast.
 For example, the following Graph API call `https://graph.facebook.com/bgolub?fields=id,name,picture` will only return the id, name, and picture in Ben's profile:
 ```sh
@@ -229,7 +229,7 @@ GET graph.facebook.com
   /bgolub?
     fields=id,name,picture
 ```
-#### Ordering
+### 3. Ordering
 You can order certain data sets chronologically. `order` must be one of the following values:
 * `chronological`
 * `reverse_chronological`
@@ -246,8 +246,8 @@ GET graph.facebook.com
 | `return_ssl_resources` | Used when you require a picture to be returned over a secure connection (HTTPS) to avoid mixed content warnings in browsers. | `bool` |
 | `locale`      | Used if your app needs the ability to retrieve localized content in the language of a particular locale (when available).     | `Locale` |
 
-#### Making Nested Requests
-effectively nest multiple graph queries into a single call. in a single call, you can ask for the first N photos of the first K albums. The response maintains the data hierarchy so developers do not have to weave the data together on the client. There is no limitation to the amount of nesting of levels that can occur here. You can also use a `.limit(n)` argument on each field or edge to restrict how many objects you want to get.
+### 4. Making Nested Requests
+Effectively nest multiple graph queries into a single call. In a single call, you can ask for the first N photos of the first K albums. The response maintains the data hierarchy so developers do not have to weave the data together on the client. There is no limitation to the amount of nesting of levels that can occur here. You can also use a `.limit(n)` argument on each field or edge to restrict how many objects you want to get.
 ```sh
 GET graph.facebook.com
   /me?
@@ -260,8 +260,8 @@ GET graph.facebook.com
     fields=albums.limit(5){name, photos.limit(2)},posts.limit(5)
 ```
 
-For information regarding **pagination** please refer to this [link](https://developers.facebook.com/docs/graph-api/using-graph-api/#reading)
-#### Publishing
+For information regarding **pagination** please refer to this [link](https://developers.facebook.com/docs/graph-api/using-graph-api/#reading).
+### 5. Publishing
 Most nodes in the Graph API have edges that can be publishing targets, such as `/{user-id}/feed or /{album-id}/photos`. All Graph API publishing is done with an HTTP `POST` request to the relevant edge with any necessary parameters included. For example, to publish a post on behalf of someone, you would make an HTTP `POST` request as below:
 ```sh
 POST graph.facebook.com
@@ -270,7 +270,7 @@ POST graph.facebook.com
     access_token={access-token}
 ```
 All publishing calls must be signed with an [access token](https://developers.facebook.com/docs/facebook-login/access-tokens/). You can determine which [permissions](https://developers.facebook.com/docs/facebook-login/permissions/) are needed in this access token by looking at the [Graph API reference](https://developers.facebook.com/docs/graph-api/reference) for the node to which you wish to publish.
-#### Updating
+### 6. Updating
 All Graph API updating is done with an HTTP `POST` request to the relevant node with any updated parameters included:
 ```sh
 POST graph.facebook.com
@@ -279,7 +279,7 @@ POST graph.facebook.com
     access_token={access-token}
 ```
 All update calls must be signed with an access token with the same permissions needed for publishing to that endpoint, as per the Graph API reference for the node that you wish to update.
-#### Deleting
+### 7. Deleting
 Delete nodes from the graph by sending HTTP `DELETE` requests to them:
 ```sh
 DELETE graph.facebook.com
@@ -327,4 +327,4 @@ Requests made to our APIs can result in a number of different error responses.  
 	}
 }
 ```
-For a more detailed info on the search type please refer to [this page](https://developers.facebook.com/docs/graph-api/using-graph-api#errors)
+For a more detailed info on the search type please refer to [this page](https://developers.facebook.com/docs/graph-api/using-graph-api#errors).
