@@ -54,7 +54,7 @@ Check out the full code example for Facebook Login below.
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1671148499831845',
+    appId      : 'YOUR APP ID GOES HERE',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -205,11 +205,16 @@ Please, refer to this page to find more info on [Login Dialog](https://developer
 https://developers.facebook.com/docs/facebook-login/best-practices
 
 ## The Graph API
-The primary way for apps to read and write to the Facebook social graph. t's a low-level HTTP-based API that is used to query data, post new stories, upload photos and a variety of other tasks that an app might need to do.
+The Graph API is named after the idea of a 'social graph' - a representation of the information on Facebook composed of:
+* **nodes** - basically "things" such as a User, a Photo, a Page, a Comment
+* **edges** - the connections between those "things", such as a Page's Photos, or a Photo's Comments
+* **fields** - info about those "things", such as a person's birthday, or the name of a Page
 
-#### Reading
-All nodes and edges in the Graph API can be read simply with an HTTP GET request to the relevant endpoint. 
-Most API calls must be signed with an access token. You can determine which permissions are needed in this access token by looking at the Graph API reference for the node or edge that you wish to read. You can also use the Graph API Explorer to quickly generate tokens in order to play about with the API and discover how it works.
+It's a low-level HTTP-based API that is used to query data, post new stories, upload photos and a variety of other tasks that an app might need to do.
+
+### 1. Reading
+All nodes and edges in the Graph API can be read simply with an HTTP `GET` request to the relevant endpoint. 
+Most API calls must be signed with an [access token](https://developers.facebook.com/docs/facebook-login/access-tokens/). You can determine which [permissions](https://developers.facebook.com/docs/facebook-login/permissions/) are needed in this access token by looking at the Graph API reference for the node or edge that you wish to read. You can also use the [Graph API Explorer](https://developers.facebook.com/tools/explorer/) to quickly generate tokens in order to play about with the API and discover how it works.
 
 The `/me` node is a special endpoint that translates to the `user_id` of the person (or the `page_id` of the Facebook Page) whose access token is currently being used to make the API calls. If you had a user access token, you could retrieve all of a user's photos by using:
 ```sh
