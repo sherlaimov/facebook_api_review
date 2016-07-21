@@ -287,7 +287,7 @@ DELETE graph.facebook.com
     access_token=...
 ```
 Generally speaking, an **app can only delete content it created**. Check the reference guide for the node or edge for more information.
-#### Searching
+### 8. Searching
 You can search over many public objects in the social graph with the `/search` endpoint. The syntax for search is:
 ```sh
 GET graph.facebook.com
@@ -312,7 +312,7 @@ GET graph.facebook.com
     distance=1000
 ```
 For a more detailed info on the search type please refer to [this page](https://developers.facebook.com/docs/graph-api/using-graph-api#search)
-#### Handling Errors
+### 9. Handling Errors
 Requests made to our APIs can result in a number of different error responses.  The following represents a common error response resulting from a failed API request:
 ```javascript
 {
